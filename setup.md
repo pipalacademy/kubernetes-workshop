@@ -41,3 +41,28 @@ A kubernetes cluster has been setup to be used by all the participants of the wo
 
 ## Setting up `minikube`
 
+Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster on your system for users. It makes things simpler for people looking to try out Kubernetes or develop with it day-to-day.
+
+### Linux Users
+
+```bash
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+...
+$ chmod +x ./minikube
+$ sudo mv ./minikube /usr/local/bin/minikube
+$ minikube version
+minikube version: v0.33.1
+
+```
+
+### Mac Users
+
+```bash
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+...
+$ chmod +x ./minikube
+$ sudo mv ./minikube /usr/local/bin/minikube
+$ minikube version
+minikube version: v0.33.1
+
+```
