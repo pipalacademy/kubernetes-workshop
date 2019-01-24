@@ -67,6 +67,7 @@ func life(w http.ResponseWriter, r *http.Request) {
     if duration.Seconds() > 10 {
         w.WriteHeader(http.StatusOK)
         w.Write([]byte("I am born! Yay! :)\n"))
+        return
     }
     w.WriteHeader(http.StatusInternalServerError)
     w.Write([]byte("On the way!\n"))
@@ -78,7 +79,7 @@ func init() {
 }
 
 func main() {
-    http.HandleFunc("/", handler)
+    http.HandleFunc("/count", handler)
     http.HandleFunc("/health", health)
     http.HandleFunc("/life", life)
     log.Println("Starting the server...")
