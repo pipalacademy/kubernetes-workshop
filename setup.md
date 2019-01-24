@@ -12,7 +12,7 @@ this we can even inspect cluster resources, create, delete and update components
 ### Linux Users
 
 ```bash
-$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/darwin/amd64/kubectl
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/linux/amd64/kubectl
 ...
 $ chmod +x ./kubectl
 $ sudo mv ./kubectl /usr/local/bin/kubectl
@@ -25,7 +25,7 @@ Server Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.1", GitCom
 ### Mac Users
 
 ```bash
-$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/linux/amd64/kubectl
+$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/darwin/amd64/kubectl
 ...
 $ chmod +x ./kubectl
 $ sudo mv ./kubectl /usr/local/bin/kubectl
