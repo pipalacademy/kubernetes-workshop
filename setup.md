@@ -39,7 +39,30 @@ Server Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.1", GitCom
 
 A kubernetes cluster has been setup to be used by all the participants of the workshop.
 
-## Setting up `minikube`
+Please look at the steps provided in [Workshop Notes](https://bit.ly/vmware-docker)
+
+## Setting Up `kubectl`
+
+After setting up the config file, you will be needed to perform some `kubectl` actions to set the default namespace to the one given to you. It is needed so that every participant can work independent of each other's actions.
+
+For example, if you are given `abcxyz`.
+
+```bash
+$ kubectl config get-contexts
+CURRENT   NAME            CLUSTER         AUTHINFO              NAMESPACE
+*         kube-workshop   kube-workshop   kube-workshop-admin
+
+$ kubectl config set-context kube-workshop --cluster kube-workshop --user kube-workshop-admin --namespace abcxyz
+Context "kube-workshop" modified.
+
+$ kubectl config get-contexts
+CURRENT   NAME            CLUSTER         AUTHINFO              NAMESPACE
+*         kube-workshop   kube-workshop   kube-workshop-admin   abcxyz
+
+$ kubectl
+```
+
+## Installing `minikube`
 
 Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster on your system for users. It makes things simpler for people looking to try out Kubernetes or develop with it day-to-day.
 
