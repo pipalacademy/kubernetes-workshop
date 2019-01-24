@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: http-server
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: http-server
+        lang: python
+    spec:
+      containers:
+        - name: http-server
+          image: python:3-alpine
+          command: ["python", "-m", "http.server"]
+          ports:
+            - containerPort: 8080
