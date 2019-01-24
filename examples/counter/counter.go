@@ -5,21 +5,49 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "log"
+    "os"
     "net/http"
 )
+
+type CountInfo struct {
+    Hostname    string
+    Pid         int
+    Count       int
+}
 
 var Count = 0;
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	Count += 1
-	if (Count == 13) {
-		log.Fatal("I don't like 13. Quitting!")
-	}
+    Count += 1
+    if (Count == 13) {
+        log.Fatal("I don't like 13. Quitting!")
+    }
 
-    log.Printf("Count=%d\n", Count)
-    fmt.Fprintf(w, "%d\n", Count)    
+    hostname, err := os.Hostname()
+    if err != nil {
+        panic(err)
+    }
+
+    pid := os.Getpid()
+
+    info := CountInfo{
+        hostname,
+        pid,
+        Count,
+    }
+
+    infoJson, err := json.Marshal(info)
+    if err != nil {
+        log.Fatal("Cannot encode to JSON ", err)
+    }
+
+
+    log.Printf("Host=%s Pid=%d Count=%d\n", hostname, pid, Count)
+    //fmt.Fprintf(w, "%s[%d] %d\n", hostname, pid, Count)
+    fmt.Fprintf(w, "%s\n", infoJson)
 }
 
 func main() {
