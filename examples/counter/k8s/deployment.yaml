@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: counter
+  labels:
+    run: counter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: counter
+  template:
+    metadata:
+      labels:
+        run: counter
+        lang: go
+    spec:
+      containers:
+        - name: counter
+          image: anandology/go-counter
+          ports:
+            - containerPort: 8080
