@@ -21,6 +21,7 @@ type CountInfo struct {
 
 var Count = 0
 var Healthy = true
+var started time.Time
 
 func handler(w http.ResponseWriter, r *http.Request) {
     Count += 1
@@ -54,26 +55,32 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func health(w http.ResponseWriter, r *http.Request) {
     if (Healthy == false) {
         w.WriteHeader(http.StatusInternalServerError)
-        w.Write([]byte("I am unhealthy! :(\n"))
+        w.Write([]byte("I am dead! X(\n"))
         return
     }
-    w.WriteHeader(http.StatusOK)
-    w.Write([]byte("I am healthy! :)\n"))
-}
-
-func liveliness(w http.ResponseWriter, r *http.Request) {
     w.WriteHeader(http.StatusOK)
     w.Write([]byte("I am alive! :)\n"))
 }
 
+func life(w http.ResponseWriter, r *http.Request) {
+    duration := time.Since(started)
+    if duration.Seconds() > 10 {
+        w.WriteHeader(http.StatusOK)
+        w.Write([]byte("I am born! Yay! :)\n"))
+    }
+    w.WriteHeader(http.StatusInternalServerError)
+    w.Write([]byte("On the way!\n"))
+}
+
 func init() {
+    started = time.Now()
     time.Sleep(5*time.Second)
 }
 
 func main() {
     http.HandleFunc("/", handler)
     http.HandleFunc("/health", health)
-    http.HandleFunc("/liveliness", liveliness)
+    http.HandleFunc("/life", life)
     log.Println("Starting the server...")
     log.Fatal(http.ListenAndServe(":8080", nil))
 }
