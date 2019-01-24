@@ -24,7 +24,7 @@ var Healthy = true
 
 func handler(w http.ResponseWriter, r *http.Request) {
     Count += 1
-    if (Count == 10) {
+    if (Count == 13) {
         Healthy = false
     }
 
@@ -54,11 +54,16 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func health(w http.ResponseWriter, r *http.Request) {
     if (Healthy == false) {
         w.WriteHeader(http.StatusInternalServerError)
-        w.Write([]byte("unhealthy\n"))
+        w.Write([]byte("I am unhealthy! :(\n"))
         return
     }
     w.WriteHeader(http.StatusOK)
-    w.Write([]byte("healthy\n"))
+    w.Write([]byte("I am healthy! :)\n"))
+}
+
+func liveliness(w http.ResponseWriter, r *http.Request) {
+    w.WriteHeader(http.StatusOK)
+    w.Write([]byte("I am alive! :)\n"))
 }
 
 func init() {
@@ -68,6 +73,7 @@ func init() {
 func main() {
     http.HandleFunc("/", handler)
     http.HandleFunc("/health", health)
+    http.HandleFunc("/liveliness", liveliness)
     log.Println("Starting the server...")
     log.Fatal(http.ListenAndServe(":8080", nil))
 }
