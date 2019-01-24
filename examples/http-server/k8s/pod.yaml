@@ -5,6 +5,7 @@ metadata:
   labels:
     app: http-server
     lang: python
+  namespace: default
 spec:
   containers:
     - image: python
