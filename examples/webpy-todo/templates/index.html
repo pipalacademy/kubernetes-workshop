@@ -1,0 +1,22 @@
+$def with (todos)
+
+<h1>Todos</h1>
+
+<div>
+$for t in todos:
+    <div class="todo">$t.label</div>
+</div>
+
+<h2>Add new Todo:</h2>
+<form method="POST">
+	<input type="text" name="todo">
+	<br>
+	<button type="submit">Add</button>
+</form>
+
+<style type="text/css">
+.todo {
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+}
+</style>

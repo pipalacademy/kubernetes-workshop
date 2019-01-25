@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: webpy-todo
+  labels:
+    run: webpy-todo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: webpy-todo
+  template:
+    metadata:
+      labels:
+        run: webpy-todo
+        lang: python
+    spec:
+      containers:
+        - name: webpy-todo
+          image: palnabarun/webpy-todo
+          ports:
+            - containerPort: 8080
