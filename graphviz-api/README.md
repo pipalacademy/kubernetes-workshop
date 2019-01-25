@@ -10,13 +10,17 @@ See <http://graphviz.org/> for more details about graphviz.
 
 Install Python dependencies using:
 
-	$ pip install -r requirements.txt
+    $ pip install -r requirements.txt
 
 # How to run
 
 To run server on port 8000:
 
-	$ python api.py
+    $ python api.py
+
+To run in production use:
+    
+    $ gunicorn -w 4 api:app
 
 ## How to Use
 
