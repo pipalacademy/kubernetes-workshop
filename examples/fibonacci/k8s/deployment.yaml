@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: fibonacci
+  namespace: nabarun
+  labels:
+    run: fibonacci
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: fibonacci
+  template:
+    metadata:
+      labels:
+        run: fibonacci
+        lang: go
+    spec:
+      containers:
+        - name: fibonacci
+          image: palnabarun/fibonacci
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /life
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 2

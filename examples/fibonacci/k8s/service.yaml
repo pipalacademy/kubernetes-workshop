@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibonacci
+spec:
+  type: NodePort
+  selector:
+    run: fibonacci
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
