@@ -1,0 +1,1 @@
+{"input": "graph { A -- {B, C, D} -- {F} }"}
