@@ -47,9 +47,9 @@ Run benchmark with 200 requests with a concurrency of 4.
 
     ./bench.sh -n 200 -c 4
 
-You many need to install apache-bench for using it.
+You many need to install apache-bench (ab) for using it.
 
-Install graphviz using:
+Install `ab` using:
 
 	$ apt-get install -y apache2-utils
 
