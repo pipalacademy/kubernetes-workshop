@@ -20,3 +20,8 @@ spec:
           image: palnabarun/webpy-todo
           ports:
             - containerPort: 8080
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef: webpy-todo
+                key: DATABASE_URL
