@@ -25,7 +25,7 @@ To run server on port 8000:
 
 To run in production use:
     
-    $ gunicorn -w 4 api:app
+    $ gunicorn -w 4 api:app -b 0.0.0.0:8000
 
 ## How to Use
 
@@ -47,4 +47,9 @@ Run benchmark with 200 requests with a concurrency of 4.
 
     ./bench.sh -n 200 -c 4
 
+You many need to install apache-bench for using it.
+
+Install graphviz using:
+
+	$ apt-get install -y apache2-utils
 
