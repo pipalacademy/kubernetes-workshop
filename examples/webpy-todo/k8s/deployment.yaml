@@ -23,5 +23,6 @@ spec:
           env:
             - name: DATABASE_URL
               valueFrom:
-                secretKeyRef: webpy-todo
-                key: DATABASE_URL
+                secretKeyRef:
+                  name: webpy-todo
+                  key: DATABASE_URL
