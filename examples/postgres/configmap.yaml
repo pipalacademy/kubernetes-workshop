@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: todo
+  POSTGRES_USER: kubernetes-workshop
+  POSTGRES_PASSWORD: vmware-kubernetes
