@@ -28,3 +28,18 @@ Sample Usage:
 
     $ curl -d '{"input": "graph { A -- {B, C, D} -- {F} }"}' http://localhost:8000/dot
     {"data": "...base64-encoded-png-image..."}
+
+
+## How to benchmark
+
+There are some scripts provided in benchmark/ directory.
+
+To benchmark:
+
+    ./bench.sh
+
+Run benchmark with 200 requests with a concurrency of 4.
+
+    ./bench.sh -n 200 -c 4
+
+
