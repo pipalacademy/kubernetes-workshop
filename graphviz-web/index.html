@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Graphviz Web</title>
+    <style type="text/css">
+      img {
+        max-width: 100%;
+      }
+    </style>    
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">      
+        <a class="navbar-brand" href="#">Graphviz Web</a>
+      </div>
+    </nav>
+
+    <br>
+
+    <div class="container">
+      <div class="row">   
+        <div class="col-sm">
+          <h4>Graphviz Diagram</h4>
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" id="sample-1" href="#">Sample 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sample-2" href="#">Sample 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sample-3" href="#">Sample 3</a>
+            </li>
+          </ul>          
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="dot" rows="10">
+              </textarea>
+            </div>
+            <button id="gv-generate" type="button" class="btn btn-primary mb-2">Generate</button>        
+          </form>
+        </div>
+        <div class="col-sm">
+          <h4>Generated Image</h4>
+          <div id="output">
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="js/config.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+      $(function() {
+        var samples = {
+          'sample-1': `
+digraph G {
+  "Welcome" -> "To"
+  "To" -> "Web"
+  "To" -> "GraphViz!"
+}`,
+          'sample-2': `
+graph {
+  A -- {B, C, D} -- {F}
+}`,
+          'sample-3': `
+digraph g {
+  node [shape = record,height=.1];
+  node0[label = "<f0> |<f1> G|<f2> "];
+  node1[label = "<f0> |<f1> E|<f2> "];
+  node2[label = "<f0> |<f1> B|<f2> "];
+  node3[label = "<f0> |<f1> F|<f2> "];
+  node4[label = "<f0> |<f1> R|<f2> "];
+  node5[label = "<f0> |<f1> H|<f2> "];
+  node6[label = "<f0> |<f1> Y|<f2> "];
+  node7[label = "<f0> |<f1> A|<f2> "];
+  node8[label = "<f0> |<f1> C|<f2> "];
+  "node0":f2 -> "node4":f1;
+  "node0":f0 -> "node1":f1;
+  "node1":f0 -> "node2":f1;
+  "node1":f2 -> "node3":f1;
+  "node2":f2 -> "node8":f1;
+  "node2":f0 -> "node7":f1;
+  "node4":f2 -> "node6":f1;
+  "node4":f0 -> "node5":f1;
+}          
+`         
+        };
+
+        function show_dot(sample_id) {
+          var dot = samples[sample_id];
+          $("#dot").val(dot);          
+        }
+
+        $("a.nav-link").click(function() {
+          var id = $(this).attr("id");
+          show_dot(id);
+        });
+        $("button#gv-generate").click(function() {
+          var dot = $("#dot").val();
+          var data = JSON.stringify({input: dot});
+          $.ajax(GRAPHVIZ_API_ENDPOINT, {
+            method: "POST",
+            contentType: 'application/json',
+            data: data,
+            success: function(response) {
+              $("#output img").remove();
+              $("#output div").remove();
+              $("<img></img>")
+                .appendTo("#output")
+                .attr("src", "data:image/png;base64, " + response.data);
+            }, 
+            error: function(response) {
+              console.log("error", response.responseJSON);
+              $("#output img").remove();
+              $("#output div").remove();
+              $("<div></div>")
+                .appendTo("#output")
+                .text(response.responseJSON.error);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
