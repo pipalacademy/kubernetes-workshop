@@ -12,6 +12,11 @@ Install Python dependencies using:
 
     $ pip install -r requirements.txt
 
+Install graphviz using:
+
+	$ apt-get update
+	$ apt-get install -y graphviz  
+
 # How to run
 
 To run server on port 8000:
