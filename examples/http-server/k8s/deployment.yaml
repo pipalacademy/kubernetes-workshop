@@ -2,7 +2,6 @@ apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: http-server
-nacci
   labels:
     app: http-server
 spec:
@@ -22,3 +21,7 @@ spec:
           command: ["python", "-m", "http.server", "8000"] 
           ports:
             - containerPort: 8000
+          env:
+            name: FOO
+            value: abcd
+
