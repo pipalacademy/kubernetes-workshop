@@ -54,6 +54,7 @@
           </div>
         </div>        
       </div>
+      <p>API URL: <span id="url"></span></p>
     </div>
 
     <!-- Optional JavaScript -->
@@ -105,6 +106,8 @@ digraph g {
           var dot = samples[sample_id];
           $("#dot").val(dot);          
         }
+
+        $("#url").html(GRAPHVIZ_API_ENDPOINT);
 
         $("a.nav-link").click(function() {
           var id = $(this).attr("id");
