@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: counter
   labels:
-    run: counter
+    app: counter
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      run: counter
+      app: counter
   template:
     metadata:
       labels:
-        run: counter
+        app: counter
         lang: go
     spec:
       containers:

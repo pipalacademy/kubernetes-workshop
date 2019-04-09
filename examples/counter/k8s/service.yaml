@@ -4,7 +4,8 @@ metadata:
   name: counter
 spec:
   selector:
-    run: counter
+    app: counter
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
