@@ -1,0 +1,51 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: fibonacci
+  labels:
+    app: fibonacci
+    project: dev-nabarun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fibonacci
+      project: dev-nabarun
+  template:
+    metadata:
+      labels:
+        app: fibonacci
+        project: dev-nabarun
+    spec:
+      containers:
+        - name: fibonacci
+          image: palnabarun/fibonacci
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fibonacci
+spec:
+  selector:
+    app: fibonacci
+    project: dev-nabarun
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: fibonacci
+spec:
+  rules:
+  - host: fibonacci.k8s.pipal.in
+    http:
+      paths:
+      - backend:
+          serviceName: fibonacci
+          servicePort: 8080
+        path: /
