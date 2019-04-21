@@ -1,0 +1,38 @@
+---
+- name: setup rorodata node
+  hosts: all
+  vars_files:
+    - vars.yml
+  gather_facts: true
+  sudo: true
+
+  tasks:
+    - name: Update apt cache
+      apt: update_cache=yes cache_valid_time=604800 # 1 week in seconds (7*24*3600)
+
+    - name: install dependencies
+      apt: package={{item}} state=present
+      with_items: "{{ system_packages }}"
+
+    - name: create user groups
+      group: name={{item.name}} state={{item.state | default('present')}} 
+      with_items: "{{ users }}"
+
+    - name: Add users
+      user: 
+        name: "{{ item.name }}"
+        state: "{{ item.state | default('present') }}" 
+        password: "{{ item.password }}"
+        group: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        shell: "/bin/bash"
+      with_items: "{{ users }}"
+
+    - name: disable root login
+      lineinfile: "dest=/etc/ssh/sshd_config state=present regexp='^PermitRootLogin' line='PermitRootLogin no'"
+
+    - name: enable password authentication
+      lineinfile: "dest=/etc/ssh/sshd_config state=present regexp='^PasswordAuthentication' line='PasswordAuthentication yes'"
+
+    - name: enable password less sudo for users in sudo group
+      lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL:ALL) NOPASSWD:ALL'"

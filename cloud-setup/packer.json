@@ -1,0 +1,25 @@
+{
+  "variables": {
+    "api_token": ""
+  },
+  "builders": [
+    {
+      "type": "digitalocean",
+      "ssh_username": "root",
+      "api_token": "{{user `api_token`}}",
+      "image": "ubuntu-18-04-x64",
+      "region": "sgp1",
+      "size": "512mb",
+      "snapshot_name": "docker-node",
+      "tags": ["docker"]
+    }
+  ],
+  "provisioners": [{
+      "type": "shell",
+      "inline": ["sudo apt-get -y install python"]
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "playbook.yml"
+  }]
+}

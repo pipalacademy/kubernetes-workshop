@@ -1,0 +1,10 @@
+system_packages:
+  - build-essential
+  - docker.io
+
+users:
+  - name: pipal
+    groups: 
+      - sudo
+      - docker
+    password: "$6$AhWVzgtYikWK$1PueofYvyb0A5aF0MPvvf/ZjkmFnxplcSGulJ7DjPXU.iavexPZ1v2OYk0o9Zvy42/DGIi8VQFdr5J5yiNXO8."
