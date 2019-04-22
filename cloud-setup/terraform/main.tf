@@ -1,4 +1,8 @@
 
+provider "digitalocean" {
+  token = "${var.digitalocean_api_token}"
+}
+
 data "digitalocean_image" "docker-node" {
   name = "docker-node"
 }
