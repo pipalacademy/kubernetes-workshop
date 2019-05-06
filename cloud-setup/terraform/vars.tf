@@ -3,9 +3,9 @@ variable "digitalocean_api_token" {
   type = "string"
 }
 
-variable "digitalocean_region" {
+variable "region" {
   type = "string"
-  default = "sgp1"
+  default = "blr1"
 }
 
 variable "names" {
@@ -40,5 +40,30 @@ variable "names" {
 
 variable "num_nodes" {
   type = "string"
-  default = "0"
+  default = "3"
+}
+
+variable "k8s_cluster_name" {
+  type = "string"
+  default = "k8s-workshop"
+}
+
+variable "k8s_node_count" {
+  type = "string"
+  default = "2"
+}
+
+variable "k8s_node_size" {
+  type = "string"
+  default = "s-1vcpu-2gb"
+}
+
+variable "k8s_version" {
+  type = "string"
+  default = "1.13.5-do.1"
+}
+
+variable "k8s_enabled" {
+  description = "whether or not to create k8s cluster"
+  default = 1
 }

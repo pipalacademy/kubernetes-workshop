@@ -10,7 +10,7 @@ data "digitalocean_image" "docker-node" {
 resource "digitalocean_droplet" "node" {
   image  = "${data.digitalocean_image.docker-node.image}"
   name   = "${var.names[count.index]}"
-  region = "${var.digitalocean_region}"
+  region = "${var.region}"
   size   = "s-1vcpu-1gb"
   count  = "${var.num_nodes}"  
 }
