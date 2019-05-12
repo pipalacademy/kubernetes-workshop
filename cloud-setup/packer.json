@@ -8,7 +8,7 @@
       "ssh_username": "root",
       "api_token": "{{user `api_token`}}",
       "image": "ubuntu-18-04-x64",
-      "region": "sgp1",
+      "region": "blr1",
       "size": "512mb",
       "snapshot_name": "docker-node",
       "tags": ["docker"]
