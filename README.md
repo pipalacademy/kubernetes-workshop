@@ -2,5 +2,8 @@
 
 Training notes for the Docker & Kubernetes workshop by Pipal Academy.
 
-[Get Started &rarr;](index.md)
+## Table of Contents
 
+* [Setting up](setup.md)
+* [Introduction to Docker](docker.md)
+* [Docker Cheatsheet](docker-cheatsheet.md)

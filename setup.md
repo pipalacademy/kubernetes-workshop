@@ -1,91 +1,9 @@
-# Setting up Kubernetes
+# Lab Setup for Docker & Kubernetes Workshop
 
-- Install kubectl
-- Setup access to the common kubernetes cluster used in the workshop
-- Install your own minikube cluster
+A virtual machine is already provisioned for each of the participants.
 
-## Installing `kubectl`
+The details of how to access that will be shared at the beginning of the workshop.
 
-`kubectl` is the command-line tool for Kubernetes. It can be used to deploy and manage applications on Kubernetes. Using
-this we can even inspect cluster resources, create, delete and update components.
+If you are curious about how it is setup, look at the packer and terraform configuration in [cloud-setup][] directory in this repo.
 
-### Linux Users
-
-```bash
-$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/linux/amd64/kubectl
-...
-$ chmod +x ./kubectl
-$ sudo mv ./kubectl /usr/local/bin/kubectl
-$ kubectl version
-Client Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.2", GitCommit:"cff46ab41ff0bb44d8584413b598ad8360ec1def", GitTreeState:"clean", BuildDate:"2019-01-10T23:35:51Z", GoVersion:"go1.11.4", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.1", GitCommit:"eec55b9ba98609a46fee712359c7b5b365bdd920", GitTreeState:"clean", BuildDate:"2018-12-13T10:31:33Z", GoVersion:"go1.11.2", Compiler:"gc", Platform:"linux/amd64"}
-
-```
-
-### Mac Users
-
-```bash
-$ curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.2/bin/darwin/amd64/kubectl
-...
-$ chmod +x ./kubectl
-$ sudo mv ./kubectl /usr/local/bin/kubectl
-$ kubectl version
-Client Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.2", GitCommit:"cff46ab41ff0bb44d8584413b598ad8360ec1def", GitTreeState:"clean", BuildDate:"2019-01-10T23:35:51Z", GoVersion:"go1.11.4", Compiler:"gc", Platform:"linux/amd64"}
-Server Version: version.Info{Major:"1", Minor:"13", GitVersion:"v1.13.1", GitCommit:"eec55b9ba98609a46fee712359c7b5b365bdd920", GitTreeState:"clean", BuildDate:"2018-12-13T10:31:33Z", GoVersion:"go1.11.2", Compiler:"gc", Platform:"linux/amd64"}
-
-```
-
-## Accessing the shared kubernetes cluster
-
-A kubernetes cluster has been setup to be used by all the participants of the workshop.
-
-Please look at the steps provided in [Workshop Notes](https://bit.ly/vmware-docker)
-
-## Setting Up `kubectl`
-
-After setting up the config file, you will be needed to perform some `kubectl` actions to set the default namespace to the one given to you. It is needed so that every participant can work independent of each other's actions.
-
-For example, if you are given `abcxyz`.
-
-```bash
-$ kubectl config get-contexts
-CURRENT   NAME            CLUSTER         AUTHINFO              NAMESPACE
-*         kube-workshop   kube-workshop   kube-workshop-admin
-
-$ kubectl config set-context kube-workshop --cluster kube-workshop --user kube-workshop-admin --namespace abcxyz
-Context "kube-workshop" modified.
-
-$ kubectl config get-contexts
-CURRENT   NAME            CLUSTER         AUTHINFO              NAMESPACE
-*         kube-workshop   kube-workshop   kube-workshop-admin   abcxyz
-
-$ kubectl
-```
-
-## Installing `minikube`
-
-Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster on your system for users. It makes things simpler for people looking to try out Kubernetes or develop with it day-to-day.
-
-### Linux Users
-
-```bash
-$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-...
-$ chmod +x ./minikube
-$ sudo mv ./minikube /usr/local/bin/minikube
-$ minikube version
-minikube version: v0.33.1
-
-```
-
-### Mac Users
-
-```bash
-$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-...
-$ chmod +x ./minikube
-$ sudo mv ./minikube /usr/local/bin/minikube
-$ minikube version
-minikube version: v0.33.1
-
-```
+[cloud-setup]: https://github.com/pipalacademy/kubernetes-workshop/tree/master/cloud-setup
