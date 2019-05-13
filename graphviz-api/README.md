@@ -19,11 +19,7 @@ Install graphviz using:
 
 # How to run
 
-To run server on port 8000:
-
-    $ python api.py
-
-To run in production use:
+To run the server on port 8000:
     
     $ gunicorn -w 4 api:app -b 0.0.0.0:8000
 
