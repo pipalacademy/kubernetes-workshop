@@ -14,10 +14,35 @@
 	- image
 	- container
 	- registry
+  -
+
+## What is Docker
+
+Docker is a popular open-source container engine.
+
+Container is a way to package a software application with all its dependencies so that it can run on any environment. This includes everything that is required to run the application: the code, system tools, settings etc.
+
+Unlike VMs, containters are light weight. Since they share the host machine's OS kernel, it does not require running an OS for each application.
+
+## Docker Terminology
+
+**Image:** Docker container image is a package of the application that is required to run a docker container.
+
+**Container:** Docker container is an image in execution. There could be
+multiple containers running for the same image. Each container will have
+a unique id and a name.
+
+**Registry:** Docker Registry is a repository of docker images. By
+default, docker provides a public docker registry at
+https://hub.docker.com/
+
+**Dockerfile:** Dockerfile is a file that is used to specify how to
+build a docker image. It contains the steps to build a docker image.
 
 ## Hello, world!
 
-Docker is already installed on your dev nodes. You can verify if it is working by running the command `docker version`.
+Docker is already installed on your dev nodes. You can verify if it is
+working by running the command `docker version`.
 
 ```
 $ docker version
