@@ -40,7 +40,7 @@ variable "names" {
 
 variable "num_nodes" {
   type = "string"
-  default = "3"
+  default = "22"
 }
 
 variable "k8s_cluster_name" {
@@ -50,7 +50,7 @@ variable "k8s_cluster_name" {
 
 variable "k8s_node_count" {
   type = "string"
-  default = "2"
+  default = "1"
 }
 
 variable "k8s_node_size" {
@@ -66,4 +66,9 @@ variable "k8s_version" {
 variable "k8s_enabled" {
   description = "whether or not to create k8s cluster"
   default = 1
+}
+
+variable "lb_ip" {
+  description = "IP addess of the load balancer"
+  default = "139.59.50.40"
 }

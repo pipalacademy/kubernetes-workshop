@@ -22,3 +22,17 @@ resource "digitalocean_record" "subdomain" {
   value  = "${element(digitalocean_droplet.node.*.ipv4_address, count.index)}"
   count  = "${var.num_nodes}"  
 }
+
+resource "digitalocean_record" "lb" {
+  domain = "pipal.in"
+  type   = "A"
+  name   = "k8s"
+  value  = "${var.lb_ip}"
+}
+
+resource "digitalocean_record" "wildcard" {
+  domain = "pipal.in"
+  type   = "CNAME"
+  name   = "*.k8s"
+  value  = "k8s.pipal.in."
+}
