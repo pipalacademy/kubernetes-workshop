@@ -49,7 +49,8 @@ docker run -e VAR_NAME=value image
 
 **Expose a port:**
 
-```docker run -p host-port:container-port image
+```
+docker run -p host-port:container-port image
 ```
 
 ---
@@ -57,12 +58,14 @@ docker run -e VAR_NAME=value image
 
 **Expose a host directory as a volume:**
 
-```docker run -v host-directory:container-directory image
+```
+docker run -v host-directory:container-directory image
 ```
 
 **Expose current directory as a volume:**
 
-```docker run -v $PWD:/container-path image
+```
+docker run -v $PWD:/container-path image
 ```
 
 ---
@@ -70,9 +73,11 @@ docker run -e VAR_NAME=value image
 
 **Run a command inside a running container:**
 
-```docker exec -it container-name command
+```
+docker exec -it container-name command
 ```
 
 **Inspect a container**
-```docker inspect containter-name```
-
+```
+docker inspect containter-name```
+```
