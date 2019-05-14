@@ -4,7 +4,7 @@ metadata:
   name: counter
 spec:
   rules:
-  - host: counter.k8s.pipal.in
+  - host: counter.alpha.k8s.pipal.in
     http:
       paths:
       - backend:
