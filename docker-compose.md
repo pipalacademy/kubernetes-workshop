@@ -121,11 +121,17 @@ The web application which serves the UI and handles the user uploads.
 
 The web application runs at the port `5000` and expects the environment variables `DATABASE_URL` and `REDIS_URL`. This also requires a volume to be mounted at `/app/klickr/static/photos` so that our photos persist.
 
+Hints: 
+1. The `DATABASE_URL` is of the format `postgres://<POSTGRES_USER>:<POSTGRES_PASSWORD>@db/<POSTGRES_DB>`. You have to fill in with the appropriate username, password and database. For example, `postgres://pipal@vmware-docker@db
+2. The `REDIS_URL` is of the format `redis://redis`
+
 ### worker
 
 The task worker which creates the thumbnails for each photo uploaded by the user.
 
 For task worker, you have to use the same image as the web application. But, the command for the image here would be different. You should use `./worker.sh` in the command field. The worker also requires the environment variable `REDIS_URL`.
+
+Note: The worker should also have the same volume attached as the web application.
 
 ## References
 
