@@ -36,3 +36,11 @@ resource "digitalocean_record" "wildcard" {
   name   = "*.k8s"
   value  = "k8s.pipal.in."
 }
+
+resource "digitalocean_record" "wildcard-subdomain" {
+  domain = "pipal.in"
+  type   = "CNAME"
+  name   = "*.${var.names[count.index]}.k8s"
+  value  = "k8s.pipal.in."
+  count  = "${var.num_nodes}"
+}
