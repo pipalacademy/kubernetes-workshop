@@ -125,7 +125,7 @@ The web application runs at the port `5000` and expects the environment variable
 
 The task worker which creates the thumbnails for each photo uploaded by the user.
 
-For task worker, you have to use the same image as the web application. But, the command for the image here would be different. You should use `./workers.sh` in the command field.
+For task worker, you have to use the same image as the web application. But, the command for the image here would be different. You should use `./worker.sh` in the command field.
 
 ## References
 
