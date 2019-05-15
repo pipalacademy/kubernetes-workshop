@@ -33,3 +33,7 @@ output "kubeconfig-tokens" {
 output "kubeconfig-admin" {
   value = "${digitalocean_kubernetes_cluster.k8s-workshop.kube_config.0.raw_config}"
 }
+
+output "klickr-db" {
+  value = "${digitalocean_database_cluster.klickr.uri}"
+}

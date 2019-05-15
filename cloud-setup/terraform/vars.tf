@@ -11,6 +11,10 @@ variable "digitalocean_spaces_secret" {
   type = "string"
 }
 
+variable "db_password" {
+  type = "string"
+}
+
 variable "region" {
   type = "string"
   default = "blr1"
