@@ -1,6 +1,9 @@
 
 provider "digitalocean" {
   token = "${var.digitalocean_api_token}"
+
+  spaces_access_id  = "${var.digitalocean_spaces_key}"
+  spaces_secret_key = "${var.digitalocean_spaces_secret}"
 }
 
 data "digitalocean_image" "docker-node" {
@@ -42,5 +45,14 @@ resource "digitalocean_record" "wildcard-subdomain" {
   type   = "CNAME"
   name   = "*.${var.names[count.index]}.k8s"
   value  = "k8s.pipal.in."
+  count  = "${var.num_nodes}"
+}
+
+resource "digitalocean_spaces_bucket" "klickr" {
+  name   = "klickr-${var.names[count.index]}"
+  region = "sgp1"
+  acl = "public-read"
+
+  force_destroy = "true"
   count  = "${var.num_nodes}"
 }

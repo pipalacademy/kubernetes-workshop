@@ -3,6 +3,14 @@ variable "digitalocean_api_token" {
   type = "string"
 }
 
+variable "digitalocean_spaces_key" {
+  type = "string"
+}
+
+variable "digitalocean_spaces_secret" {
+  type = "string"
+}
+
 variable "region" {
   type = "string"
   default = "blr1"
