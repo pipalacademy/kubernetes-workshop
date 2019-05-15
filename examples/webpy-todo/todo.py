@@ -2,8 +2,10 @@ import web
 import os
 
 urls = (
-    "/", "index"
+    "/", "index",
+    "/healthy", "healthy"
 )
+
 app = web.application(urls, globals())
 render = web.template.render("templates/")
 
@@ -26,6 +28,14 @@ class index:
         if i.todo:
             add_todo(i.todo)
         raise web.seeother("/")
+
+class healthy:
+    def GET(self):
+        try:
+            db.query('select 1;')
+            web.ctx.status = '200 OK'
+        except:
+            web.ctx.status = '500 Internal Server Error'
 
 if __name__ == "__main__":
     app.run()
