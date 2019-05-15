@@ -58,7 +58,7 @@ variable "k8s_cluster_name" {
 
 variable "k8s_node_count" {
   type = "string"
-  default = "1"
+  default = "5"
 }
 
 variable "k8s_node_size" {
