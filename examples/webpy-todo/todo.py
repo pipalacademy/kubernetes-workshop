@@ -3,14 +3,19 @@ import os
 
 urls = (
     "/", "index",
-    "/healthy", "healthy"
+    "/healthy", "healthy",
+    "/ready", "ready"
 )
+
+READY = False
 
 app = web.application(urls, globals())
 render = web.template.render("templates/")
 
 db_url = os.getenv("DATABASE_URL")
 db = web.database(db_url)
+
+READY=True
 
 def get_todos():
     return db.select("todo", order="id desc")
@@ -36,6 +41,15 @@ class healthy:
             web.ctx.status = '200 OK'
         except:
             web.ctx.status = '500 Internal Server Error'
+
+class ready:
+    def GET(self):
+        global READY
+        if READY:
+            web.ctx.status = '200 OK'
+        else:
+            web.ctx.status = '500 Internal Server Error'
+
 
 if __name__ == "__main__":
     app.run()
