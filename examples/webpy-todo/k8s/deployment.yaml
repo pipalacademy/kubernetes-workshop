@@ -26,3 +26,15 @@ spec:
                 secretKeyRef:
                   name: webpy-todo
                   key: DATABASE_URL
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 2

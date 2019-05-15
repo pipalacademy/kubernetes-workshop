@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: todo
+spec:
+  rules:
+  - host: todo.tau.k8s.pipal.in <REPLACE_WITH_HOST_PATH>
+    http:
+      paths:
+      - backend:
+          serviceName: webpy-todo
+          servicePort: 80
+        path: /
