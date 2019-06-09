@@ -51,14 +51,14 @@ resource "digitalocean_record" "wildcard-subdomain" {
   count  = "${var.num_nodes}"
 }
 
-resource "digitalocean_spaces_bucket" "klickr" {
-  name   = "klickr-${var.names[count.index]}"
-  region = "sgp1"
-  acl = "public-read"
+# resource "digitalocean_spaces_bucket" "klickr" {
+#   name   = "klickr-${var.names[count.index]}"
+#   region = "sgp1"
+#   acl = "public-read"
 
-  force_destroy = "true"
-  count  = "${var.num_nodes}"
-}
+#   force_destroy = "true"
+#   count  = "${var.num_nodes}"
+# }
 
 # Create a new database cluster
 # resource "digitalocean_database_cluster" "klickr" {

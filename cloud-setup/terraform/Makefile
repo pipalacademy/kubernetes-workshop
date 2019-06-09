@@ -9,10 +9,13 @@ plan:
 apply:
 	terraform apply -var-file secrets.tfvars
 
+destroy:
+	terraform destroy -var-file secrets.tfvars
+
 output:
 	mkdir -p _output
 	@#terraform output kubeconfig-alpha > _output/kubeconfig-alpha
 	terraform output kubeconfig-admin > _output/kubeconfig-admin
-	terraform output kubeconfig-tokens > _output/kubeconfig-tokens
+	#terraform output kubeconfig-tokens > _output/kubeconfig-tokens
 
 
