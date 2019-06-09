@@ -10,7 +10,14 @@ Docker & Kubernetes Workshop
 .. toctree::
    :maxdepth: 2
 
+   workshop-overview
+   lab-setup
+   docker
    intro
+   kubectl
+   pods-services
+   volumes
+   advanced-patterns
 
 Indices and tables
 ==================
