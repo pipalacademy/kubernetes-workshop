@@ -62,17 +62,17 @@ variable "k8s_cluster_name" {
 
 variable "k8s_node_count" {
   type = "string"
-  default = "5"
+  default = "3"
 }
 
 variable "k8s_node_size" {
   type = "string"
-  default = "s-1vcpu-2gb"
+  default = "s-2vcpu-4gb"
 }
 
 variable "k8s_version" {
   type = "string"
-  default = "1.13.5-do.1"
+  default = "1.14.1-do.4"
 }
 
 variable "k8s_enabled" {
@@ -80,7 +80,7 @@ variable "k8s_enabled" {
   default = 1
 }
 
-variable "lb_ip" {
-  description = "IP addess of the load balancer"
-  default = "139.59.50.40"
-}
+# variable "lb_ip" {
+#   description = "IP addess of the load balancer"
+#   default = "139.59.50.40"
+# }
