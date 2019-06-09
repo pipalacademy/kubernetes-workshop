@@ -1,3 +1,6 @@
+terraform {
+  backend "pg" {}
+}
 
 provider "digitalocean" {
   token = "${var.digitalocean_api_token}"
