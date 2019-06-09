@@ -18,6 +18,7 @@ Docker & Kubernetes Workshop
    pods-services
    volumes
    advanced-patterns
+   appendix
 
 Indices and tables
 ==================
