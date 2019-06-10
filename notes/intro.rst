@@ -10,8 +10,9 @@ Introduction to Kubernetes
 What is Kubernetes
 ------------------
 
-The Operating System for the Cloud
-----------------------------------
+*TODO*
 
 The Architecture
 ----------------
+
+*TODO*

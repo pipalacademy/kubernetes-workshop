@@ -13,11 +13,8 @@ Docker & Kubernetes Workshop
    workshop-overview
    lab-setup
    docker
+   multi-container-apps
    intro
-   kubectl
-   pods-services
-   volumes
-   advanced-patterns
    appendix
 
 Indices and tables

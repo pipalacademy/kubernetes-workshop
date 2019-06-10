@@ -18,11 +18,11 @@ A virtual machine for each participant is setup on digitalocean and the details 
 
 .. image:: images/k8s-alpha.png
 
-The greek letter that is assigned to each one of you is the hostname and also the kubernetes namespace that you'll be using later in the workshop. 
+The greek letter that is assigned to each one of you is the hostname of your node and also the kubernetes namespace that you'll be using later in the workshop.
 
 .. note::
 
-   Please remember that the name of your host will be different from what is shown in this notes. You need replace ``alpha`` with the greek letter assigned to you in all the examples shown this chapter.
+   Please remember that the name of your node will be different from what is shown in this notes. You need replace ``alpha`` with the greek letter assigned to you in all the examples shown this chapter.
 
 
 Verify the Setup
@@ -70,3 +70,24 @@ And verify if `kubectl` is working::
 	k8s-workshop-xiiu   Ready    <none>   25m   v1.14.1
 
 If all the above commands are working for you then your lab setup is ready! Don't worry if you see slightly different name for the nodes.
+
+The kubernetes Cluster
+----------------------
+
+A common kubernetes cluster is setup for all the participants together. The cluster has been divided into multiple namespaces so that each participant can work in his own namespace, without being effected by the work of others. The name of the kubernetes namespace is same as the hostname assigned.
+
+The kubernetes configuration has been added to the each virtual machine to allow it to connect to the cluster.
+
+The kubernetes cluster has been configured with an ingress-controller (more about it later) so that
+
+Private Docker Registry
+-----------------------
+
+A private docker registry has been setup at https://registry.k8s.pipal.in/ to store docker images, this can be used to push images built during the workshop and user them with docker and kubernetes.
+
+The Repository
+--------------
+
+The code samples used for this training and the training notes are available in `a github repository <https://github.com/pipalacademy/kubernetes-workshop/>`_. Please clone it on your node::
+
+	$ git clone https://github.com/pipalacademy/kubernetes-workshop
