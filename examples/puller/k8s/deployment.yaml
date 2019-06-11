@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+          - containerPort: 80
+          volumeMounts:
+            - name: storage
+              mountPath: /usr/share/nginx/html
+        - name: puller
+          image: palnabarun/puller
+          env:
+            - name: REPOSITORY
+              value: "https://github.com/palnabarun/k8s-workshop-static"
+            - name: STORAGE_PATH
+              value: "/shared-data"
+          volumeMounts:
+            - name: storage
+              mountPath: /shared-data
+      volumes:
+        - name: storage
+          emptyDir: {}
