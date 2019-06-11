@@ -2,9 +2,9 @@ Introduction to Docker
 ======================
 .. epigraph::
 
-	"All problems in computer science can be solved by another level of indirection"
+	*"All problems in computer science can be solved by another level of indirection."*
 
-	-- David Wheeler
+	*-- David Wheeler*
 
 Hello, world!
 -------------
