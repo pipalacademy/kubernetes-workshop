@@ -13,6 +13,7 @@ spec:
     spec:
       containers:
         - name: memleak
+          imagePullPolicy: Always
           image: palnabarun/memleak
           ports:
             - containerPort: 8080
