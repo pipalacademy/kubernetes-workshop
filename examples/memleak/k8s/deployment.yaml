@@ -20,3 +20,21 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /healthy
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5        # default 10, minimum 1
+            timeoutSeconds: 2       # default 1, minimum 1
+            successThreshold: 1     # default 1, must be 1 for liveness
+            failureThreshold: 3     # default 3, minimum 1
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 2        # default 10, minimum 1
+            timeoutSeconds: 2       # default 1, minimum 1
+            successThreshold: 1     # default 1, minimum 1
+            failureThreshold: 3     # default 3, minimum 1
