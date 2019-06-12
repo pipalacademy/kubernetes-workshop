@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: memleak
+spec:
+  selector:
+    app: memleak
+  ports:
+  - port: 80
+    targetPort: 80

@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: memleak
+spec:
+  rules:
+  - host: memleak.beta.k8s.pipal.in
+    http:
+      paths:
+      - backend:
+          serviceName: memleak
+          servicePort: 80
+        path: /
