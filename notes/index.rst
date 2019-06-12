@@ -14,7 +14,9 @@ Docker & Kubernetes Workshop
    lab-setup
    docker
    multi-container-apps
-   intro
+   k8s
+   pods
+   recipes/index
    appendix
 
 Indices and tables
