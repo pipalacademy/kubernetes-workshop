@@ -96,6 +96,7 @@ Now you can start both the services using::
 This runs both graphviz-web and graphviz-api services using the docker images available in the docker registry. Lot of times, we may want to build the docker image from the source instead of using an already existing image. Docker-compose supports that by specifying ``build`` parameter. The following example, uses the image build from source for graphviz-web.
 
 ::
+
 	$ cat docker-compose.yml
 	version: '3'
 	services:

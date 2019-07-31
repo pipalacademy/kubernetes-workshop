@@ -1,3 +1,7 @@
+.. raw:: latex
+
+    \clearpage
+
 Setting up local kubernetes instance using minikube
 ===================================================
 

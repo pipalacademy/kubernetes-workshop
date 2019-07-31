@@ -6,3 +6,4 @@ Appendix
 
    docker-cheatsheet
    minikube
+   appendix/kubectl

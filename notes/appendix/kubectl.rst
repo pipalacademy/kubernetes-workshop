@@ -1,3 +1,7 @@
+.. raw:: latex
+
+    \clearpage
+
 Common `kubectl` commands
 =========================
 

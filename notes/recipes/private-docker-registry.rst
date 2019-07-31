@@ -14,7 +14,7 @@ Secret can be created using the following command:
 ::
 
     $ kubectl create secret docker-registry regcred \
-        --docker-server=registry.k8s.pipal.in \
+        --docker-server=registry.pipal.in \
         --docker-username=pipal \
         --docker-password=secret-password
     secret/regcred created
@@ -42,7 +42,7 @@ The following example starts a pod using `graphviz-web` image from a private reg
     spec:
       containers:
         - name: graphviz-web
-          image: registry.k8s.pipal.in/graphviz-web
+          image: registry.pipal.in/graphviz-web
       imagePullSecrets:
         - name: regcred
 
@@ -72,11 +72,11 @@ The changes required for creating a deployment will be similar to the changes th
         spec:
           containers:
             - name: graphviz-web
-              image: registry.k8s.pipal.in/graphviz-web
+              image: registry.pipal.in/graphviz-web
               ports:
                 - containerPort: 8080
               env:
                 - name: GRAPHVIZ_API_ENDPOINT
-                  value: http://graphviz-api.alpha.k8s.pipal.in/dot
+                  value: http://graphviz-api.alpha.pipal.in/dot
           imagePullSecrets:
             - name: regcred

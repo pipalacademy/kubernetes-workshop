@@ -16,6 +16,8 @@ Docker & Kubernetes Workshop
    multi-container-apps
    k8s
    pods
+   volumes
+   klickr
    recipes/index
    appendix
 
