@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: fortune
+spec:
+  rules:
+  - host: fortune.alpha.k8s.pipal.in
+    http:
+      paths:
+      - backend:
+          serviceName: fortune
+          servicePort: 80
+        path: /

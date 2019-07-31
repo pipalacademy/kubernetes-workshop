@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fortune
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fortune
+  template:
+    metadata:
+      labels:
+        app: fortune
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+        - name: fortune
+          image: pipalacademy/fortune
+          volumeMounts:
+            - name: html
+              mountPath: /var/www
+      volumes:
+        - name: html
+          emptyDir: {}
